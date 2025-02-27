@@ -1,1 +1,1 @@
-# ideia futura fazer minha linguagem de programação 
+# ideia futura, fazer minha linguagem de programação 
