@@ -1,3 +1,4 @@
+- [voltar](https://github.com/0joseDark/minha-linguagem-programacao/blob/main/README.md)
 ### O que é Programação por Hardware?
 
 A **programação por hardware** refere-se à técnica de desenvolver e configurar sistemas diretamente no nível do hardware, em vez de depender exclusivamente de software tradicional baseado em processadores. Isso significa que, em vez de escrever código para ser executado num CPU de propósito geral, o programador projeta e implementa funcionalidades diretamente em circuitos eletrónicos.
