@@ -1,4 +1,4 @@
-- [voltar](https://github.com/0joseDark/minha-linguagem-programacao/blob/main/README.md)
+- [back](https://github.com/0joseDark/my-programming-language/blob/main/doc-en/README-en.md)
 ### Programação por Hardware com Arduino Mega e um Portátil via USB
 
 A **Programação por Hardware** utilizando o **Arduino Mega** e um portátil com portas **USB** envolve a criação de código que interage diretamente com os componentes eletrónicos conectados ao **Arduino**. Isto permite controlar motores, LEDs, sensores e outros dispositivos físicos através de comandos enviados pelo computador.
