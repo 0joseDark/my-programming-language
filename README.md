@@ -6,3 +6,4 @@
 - fazer seres vivos, [Bio-Robótica](https://github.com/0joseDark/my-programming-language/blob/main/doc-pt/Bio-Robotica.md)
 - nome: __Alentejo__
 - mas eu estou ocupado de momento, assim outro que avance
+- - explorando modulos para a  nave ou starship
