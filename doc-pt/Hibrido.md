@@ -1,4 +1,4 @@
-# O Profissional Híbrido: Saber Robótica
+pode O Profissional Híbrido: Saber Robótica
 
 ## Introdução
 
@@ -41,8 +41,4 @@ Para integrar a robótica no seu perfil, um profissional híbrido deve desenvolv
 
 O profissional híbrido que domina conceitos de robótica está melhor preparado para os desafios do presente e do futuro. Esta combinação de competências técnicas e humanas permite-lhe inovar, resolver problemas complexos e liderar equipas multidisciplinares em ambientes tecnológicos em constante mudança.
 
-> 💡 _Saber robótica é mais do que saber programar: é compreender o mundo em que vivemos e antecipar o que está por vir._
-
----
-
-Se quiser, posso também transformar este conteúdo num ficheiro `.md` ou acrescentar imagens, tabelas ou exemplos práticos. Queres?
+> 💡 _Saber robótica é mais do que saber programar: é compreender o mundo em que vivemos e antecipar o que está por vir..
