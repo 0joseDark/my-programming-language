@@ -5,5 +5,19 @@
 - um conceito antigo, mas atual
 - fazer seres vivos, [Bio-Robótica](https://github.com/0joseDark/my-programming-language/blob/main/doc-pt/Bio-Robotica.md)
 - nome: __Alentejo__
+## Simplificando
+- A base do Alentejo é o **português**.
+### Alentejo =  
+- Código de máquina (`ficheiros .bin`)  
+- Assembler (`ficheiros .asm`)  
+- Python  
+- HTML  
+- JavaScript  
+- CSS  
+- SQLite ou MySQL  
+- C ou C++  
+- Português ou Inglês
+
 - mas eu estou ocupado de momento, assim outro que avance
 - - explorando modulos para a  nave ou starship
+  - estudando as regras
