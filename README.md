@@ -1,4 +1,5 @@
 [English](https://github.com/0joseDark/my-programming-language/blob/main/doc-en/README-en.md)
+- [translator google](https://github.com/0joseDark/traslator-google-English-Portuguese)
 # ideia futura, fazer minha linguagem de programação
 - [programação por hardware](https://github.com/0joseDark/my-programming-language/blob/main/doc-pt/programa%C3%A7%C3%A3o-por-hardware.md), [exemplo 1](https://github.com/0joseDark/my-programming-language/blob/main/doc-pt/Programacao-por-Hardware-1.md)
 
