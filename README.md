@@ -22,7 +22,18 @@
 - mas eu estou ocupado de momento, assim outro que avance
 - - explorando modulos para a  nave ou starship
   - estudando as regras
-- eu ler, escutar e falar com seres vivos, e máquinas.
-- não sou ciborgue, sou humano.
-- estou praticando gatez, língua de gato.
+---
+# Comunicação com Seres Vivos e Máquinas
+
+Eu consigo **ler**, **escutar** e **falar** com seres vivos e com máquinas.  
+Mas atenção: **não sou um ciborgue**, sou humano mesmo 😄.
+
+Atualmente, estou a **praticar a língua de gato**. *lol*  
+Com as máquinas, é praticamente a mesma coisa:  
+**estudar a linguagem delas**!
+
+Gosto bastante dos **CPUs AMD** e das **GPUs NVIDIA**.  
+Vou aprofundar o estudo num **CPU AMD** e usar o **CUDA** para tirar proveito da **GPU NVIDIA**.
+
+Isso vai permitir-me criar e treinar uma **rede neural**.
 
