@@ -18,7 +18,8 @@
 - SQLite ou MySQL  
 - C ou C++  
 - Português ou Inglês
-
+"""
+- complecando, adicione o opensim, o simulador 3D com física 
 - mas eu estou ocupado de momento, assim outro que avance
 - - explorando modulos para a  nave ou starship
   - estudando as regras
