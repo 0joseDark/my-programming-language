@@ -1,4 +1,4 @@
-- [English](https://github.com/0joseDark/my-programming-language/blob/main/doc-en/README-en.md)
+oi- [English](https://github.com/0joseDark/my-programming-language/blob/main/doc-en/README-en.md)
 - [translator google](https://github.com/0joseDark/traslator-google-English-Portuguese)
 # ideia futura, fazer minha linguagem de programação
 - [programação por hardware](https://github.com/0joseDark/my-programming-language/blob/main/doc-pt/programa%C3%A7%C3%A3o-por-hardware.md), [exemplo 1](https://github.com/0joseDark/my-programming-language/blob/main/doc-pt/Programacao-por-Hardware-1.md)
@@ -29,7 +29,7 @@
 Eu consigo **ler**, **escutar** e **falar** com seres vivos e com máquinas.  
 Mas atenção: **não sou um ciborgue**, sou humano mesmo 😄.
 
-Atualmente, estou a **praticar a língua de gato**. *lol*  
+Atualmente, estou a **praticar o gatz, a língua de gato**. *lol*  
 Com as máquinas, é praticamente a mesma coisa:  
 **estudar a linguagem delas**!
 
