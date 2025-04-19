@@ -24,5 +24,5 @@ mi[English](https://github.com/0joseDark/my-programming-language/blob/main/doc-e
   - estudando as regras
 - eu ler, escutar e falar com seres vivos, e máquinas.
 - não sou ciborgue, sou humano.
-- estou praticado gatez, língua de gato.
+- estou praticando gatez, língua de gato.
 
