@@ -33,7 +33,7 @@ Com as máquinas, é praticamente a mesma coisa:
 **estudar a linguagem delas**!
 
 Gosto bastante dos **CPUs AMD** e das **GPUs NVIDIA**.  
-Vou aprofundar o estudo num **CPU AMD** e usar o **CUDA** para tirar proveito da **GPU NVIDIA**.
+Vou aprofundar o estudo dum **CPU AMD** e usar o **CUDA** para tirar proveito da **GPU NVIDIA**.
 
 Isso vai permitir-me criar e treinar uma **rede neural**.
 
