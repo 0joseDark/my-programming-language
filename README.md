@@ -5,6 +5,7 @@
 
 - um conceito antigo, mas atual
 - fazer seres vivos, [Bio-Robótica](https://github.com/0joseDark/my-programming-language/blob/main/doc-pt/Bio-Robotica.md)
+- respeitar os outros seres vivos
 - nome: __Alentejo__
 ## Simplificando
 - A base do Alentejo é o **português**.
