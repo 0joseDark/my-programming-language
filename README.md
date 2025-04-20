@@ -1,4 +1,4 @@
-koi- [English](https://github.com/0joseDark/my-programming-language/blob/main/doc-en/README-en.md)
+- [English](https://github.com/0joseDark/my-programming-language/blob/main/doc-en/README-en.md)
 - [translator google](https://github.com/0joseDark/traslator-google-English-Portuguese)
 # ideia futura, fazer minha linguagem de programação
 - [programação por hardware](https://github.com/0joseDark/my-programming-language/blob/main/doc-pt/programa%C3%A7%C3%A3o-por-hardware.md), [exemplo 1](https://github.com/0joseDark/my-programming-language/blob/main/doc-pt/Programacao-por-Hardware-1.md)
@@ -18,7 +18,7 @@ koi- [English](https://github.com/0joseDark/my-programming-language/blob/main/do
 - SQLite ou MySQL  
 - C ou C++  
 - Português ou Inglês
-"""
+---
 - complicando, adicione o opensim, o simulador 3D com física 
 - mas eu estou ocupado de momento, assim outro que avance
 - - explorando modulos para a  nave ou starship
@@ -31,7 +31,7 @@ Mas atenção: **não sou um ciborgue**, sou humano mesmo 😄.
 
 Atualmente, estou a **praticar o gatez, a língua de gato**. *lol*  
 Com as máquinas, é praticamente a mesma coisa:  
-**estudar a linguagem delas**!
+**estudar a linguagem maquina**!
 
 Gosto bastante dos **CPUs AMD** e das **GPUs NVIDIA**.  
 Vou aprofundar o estudo dum **CPU AMD** e usar o **CUDA** para tirar proveito da **GPU NVIDIA**.
