@@ -20,9 +20,9 @@
 - Português ou Inglês
 ---
 - complicando, adicione o opensim, o simulador 3D com física 
-- mas eu estou ocupado de momento, assim outro que avance
+
 - - explorando modulos para a  nave ou starship
-  - estudando as regras
+- estudando as regras para a linguagem __Alentejo__
 ---
 # Comunicação com Seres Vivos e Máquinas
 
