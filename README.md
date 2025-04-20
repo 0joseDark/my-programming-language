@@ -28,7 +28,7 @@
 # Comunicação com Seres Vivos e Máquinas
 
 Eu consigo **ler**, **escutar** e **falar** com seres vivos e com máquinas.  
-Mas atenção: **não sou um ciborgue**, sou humano mesmo 😄.
+Mas atenção: **não sou um ciborgue**, __sou humano__ mesmo 😄.
 
 Atualmente, estou a **praticar o gatez, a língua de gato**. *lol*  
 Com as máquinas, é praticamente a mesma coisa:  
