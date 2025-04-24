@@ -12,7 +12,7 @@
 
 ## Simplifying
 
-- The base of Alentejo is **Portuguese**.
+- The base of [Alentejo](https://github.com/0joseDark/my-programming-language/blob/main/doc-en/Linguagem-Alentejo.md) is Portuguese
 
 ### Alentejo =
 
