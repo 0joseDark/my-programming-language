@@ -33,7 +33,7 @@ Mas atenção: **não sou um ciborgue**, __sou humano__ mesmo 😄.
 Atualmente, estou a **praticar o gatez, a língua de gato**. *lol*  
 Com as máquinas, é praticamente a mesma coisa:  
 **estudar a linguagem maquina**!
-
+**[CPU ou GPU](https://github.com/0joseDark/my-programming-language/blob/main/doc-pt/CPU-or-GPU.md)**
 Gosto bastante dos **CPUs AMD** e das **GPUs NVIDIA**.  
 Vou aprofundar o estudo dum **CPU AMD** e usar o **CUDA** para tirar proveito da **GPU NVIDIA**.
 
