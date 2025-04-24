@@ -8,7 +8,7 @@
 - respeitar os outros seres vivos
 - nome: __Alentejo__
 ## Simplificando
-- A base do Alentejo é o **português**.
+- A base do [Alentejo](https://github.com/0joseDark/my-programming-language/blob/main/doc-pt/Linguagem-Alentejo.md) é o **português**.
 ### Alentejo =  
 - Código de máquina (`ficheiros .bin`)  
 - Assembler (`ficheiros .asm`)  
