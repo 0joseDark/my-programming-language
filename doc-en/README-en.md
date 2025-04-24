@@ -1,13 +1,12 @@
-
-- [English](https://github.com/0joseDark/my-programming-language/blob/main/doc-en/README-en.md)  
+- [Portuguese](https://github.com/0joseDark/my-programming-language/blob/main/README.md)  
 - [translator google](https://github.com/0joseDark/traslator-google-English-Portuguese)  
 
 # future idea: create my own programming language
 
-- [hardware programming](https://github.com/0joseDark/my-programming-language/blob/main/doc-pt/programa%C3%A7%C3%A3o-por-hardware.md), [example 1](https://github.com/0joseDark/my-programming-language/blob/main/doc-pt/Programacao-por-Hardware-1.md)
+- [hardware programming](https://github.com/0joseDark/my-programming-language/blob/main/doc-en/programa%C3%A7%C3%A3o-por-hardware.md), [example 1](https://github.com/0joseDark/my-programming-language/blob/main/doc-en/Programacao-por-Hardware-1.md)
 
 - an old concept, but still relevant  
-- creating living beings, [Bio-Robotics](https://github.com/0joseDark/my-programming-language/blob/main/doc-pt/Bio-Robotica.md)  
+- creating living beings, [Bio-Robotics](https://github.com/0joseDark/my-programming-language/blob/main/doc-en/Bio-Robotica.md)  
 - respect for other living beings  
 - name: __Alentejo__
 
