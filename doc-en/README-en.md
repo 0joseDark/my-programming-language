@@ -3,7 +3,7 @@
 
 # future idea: create my own programming language
 
-- [hardware programming](https://github.com/0joseDark/my-programming-language/blob/main/doc-en/programa%C3%A7%C3%A3o-por-hardware.md), [example 1](https://github.com/0joseDark/my-programming-language/blob/main/doc-en/Programacao-por-Hardware-1.md)
+- [hardware programming](https://github.com/0joseDark/my-programming-language/blob/main/doc-en/hardware-programming-1.md), [example 1](https://github.com/0joseDark/my-programming-language/blob/main/doc-en/Programacao-por-Hardware-1.md)
 
 - an old concept, but still relevant  
 - creating living beings, [Bio-Robotics](https://github.com/0joseDark/my-programming-language/blob/main/doc-en/Bio-Robotica.md)  
