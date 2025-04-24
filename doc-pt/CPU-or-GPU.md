@@ -1,3 +1,4 @@
+- [voltar](https://github.com/0joseDark/minha-linguagem-programacao/blob/main/README.md)
 ## Qual o Melhor? **CPU** ou **GPU**?
 
 Não há resposta única,  
