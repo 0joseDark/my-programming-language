@@ -26,7 +26,7 @@
 - estudando as regras para a linguagem __Alentejo__
 - o opensim tem realidade virtual_, ou __VR__.
 - assim pode fazer __"cenarios"__, tipo __sandbox__.
-- assim, o __opensim + AI bot/robot__ tem __imaginação__
+- assim, o __opensim + AI bot/robot__ tem __"imaginação"__
 - _preciso aprender C#_, o visualizador está escrito em __C#__
 ---
 # Comunicação com Seres Vivos e Máquinas
