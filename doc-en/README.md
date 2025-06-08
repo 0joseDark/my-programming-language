@@ -27,12 +27,14 @@
 - Portuguese or English
 
 ---
+- to complicate matters, add opensim, the 3D simulator with physics
 
-- making it more complex, add OpenSim, the 3D simulator with physics
-
-- - exploring modules for the spacecraft or starship  
-- studying the rules for the __Alentejo__ language  
-
+- - exploring modules for the ship or starship
+- studying the rules for the __Alentejo__ language
+- opensim has virtual reality_, or __VR__.
+- then you can make __"scenarios"__, like __sandbox__.
+- then __opensim + AI bot/robot__ has __"imagination"__
+- _I need to learn C#_, the visualizer is written in __C#__
 ---
 
 # Communication with Living Beings and Machines
