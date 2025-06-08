@@ -24,6 +24,10 @@
 
 - - explorando modulos para a  nave ou starship
 - estudando as regras para a linguagem __Alentejo__
+- o opensim tem _realidade virtual_, ou _VR_.
+- assim pode fazer "cenarios", tipo _sandbox_.
+- assim, o __opensim + AI bot/robot__ tem __imaginação__
+- _preciso aprender C#_, o visualizador está escrito em __C#__
 ---
 # Comunicação com Seres Vivos e Máquinas
 
