@@ -482,4 +482,200 @@ Um **viewer** (como o Firestorm), cria um **avatar**, ou montar uma **grid com m
 * Uma forma de adicionar novos módulos ao OpenSim
 
 **criar um módulo personalizado** ou **instalar e configurar uma grid multi-região** ?
+Claro! Vamos desenvolver e **explicar passo a passo a instalação do OpenSimulator (OpenSim)** em **português europeu**, para que possas criar o teu próprio mundo virtual 3D — seja local (standalone) ou em rede (grid).
+
+---
+
+## 📦 O que vais instalar
+
+* ✅ **OpenSimulator** (o servidor do mundo 3D)
+* ✅ (opcional) **MySQL** (base de dados, melhor que SQLite)
+* ✅ **Viewer 3D** (como Firestorm) para entrares no mundo
+
+---
+
+## 🖥️ Requisitos
+
+| Recurso            | Mínimo recomendado                             |
+| ------------------ | ---------------------------------------------- |
+| Sistema operativo  | Windows 10 / Ubuntu / macOS (com Mono)         |
+| CPU                | 2 núcleos ou mais                              |
+| RAM                | 4 GB (8 GB para múltiplas regiões)             |
+| Disco              | 2 GB livres ou mais                            |
+| .NET / Mono        | .NET Framework (Windows) ou Mono (Linux/macOS) |
+| Conexão à Internet | Opcional para uso local, necessário para grids |
+
+---
+
+## 📁 1. Fazer o download do OpenSim
+
+1. Vai ao site oficial:
+
+   * 🌐 [https://opensimulator.org/wiki/Download](https://opensimulator.org/wiki/Download)
+
+2. Clica em **"Latest release"** (ex: `opensim-0.9.2.2.zip`)
+
+3. Extrai o ficheiro ZIP para uma pasta à tua escolha, por exemplo:
+
+   ```
+   C:\OpenSim\
+   ```
+
+---
+
+## ⚙️ 2. Configuração básica – Modo Standalone (servidor local)
+
+1. Vai até à pasta `C:\OpenSim\bin`
+
+2. Abre o ficheiro `OpenSim.ini` com um editor de texto (como Notepad++)
+
+3. Certifica-te que estás em modo **Standalone**:
+
+```ini
+[Startup]
+    ; Usa Standalone
+    gridmode = false
+```
+
+4. Vai à subpasta `Regions\` e edita `Regions.ini`:
+
+```ini
+[MinhaRegiao]
+RegionUUID = 00000000-0000-0000-0000-000000000000
+Location = 1000,1000
+InternalAddress = 0.0.0.0
+InternalPort = 9000
+ExternalHostName = 127.0.0.1
+```
+
+---
+
+## 🏁 3. Executar o servidor
+
+### No Windows:
+
+1. Abre o terminal `cmd`
+2. Vai até à pasta `C:\OpenSim\bin`
+3. Escreve:
+
+```cmd
+OpenSim.exe
+```
+
+---
+
+### No Ubuntu ou macOS (com Mono instalado):
+
+```bash
+cd ~/OpenSim/bin
+mono OpenSim.exe
+```
+
+---
+
+### Primeira execução:
+
+* Ele vai pedir para criares um utilizador:
+
+  ```
+  First name: avatar
+  Last name: teste
+  Password: 1234
+  E-mail: (opcional)
+  Home region: MinhaRegiao
+  ```
+
+---
+
+## 🔌 4. Instalar o Visualizador (Viewer)
+
+1. Vai a [https://www.firestormviewer.org/downloads/](https://www.firestormviewer.org/downloads/)
+
+2. Descarrega a versão **Firestorm para OpenSim**
+
+3. Instala e abre o Firestorm
+
+4. Vai a `Preferências > OpenSim` e adiciona a grid:
+
+   * URI: `http://127.0.0.1:9000`
+   * Nome: `LocalGrid`
+
+5. Inicia sessão com o utilizador criado no OpenSim:
+
+   * Nome: `avatar teste`
+   * Password: `1234`
+
+---
+
+## 🧪 5. Testar o mundo virtual
+
+* O teu avatar vai entrar numa ilha vazia
+* Podes usar:
+
+  * **Ctrl+B** para construir
+  * **Inventário** (Ctrl+I) para adicionar objetos
+  * **Scripts** para interação
+
+---
+
+## 💾 (Opcional) Usar MySQL em vez de SQLite
+
+1. Instala MySQL (ou MariaDB)
+
+2. Cria uma base de dados:
+
+   ```sql
+   CREATE DATABASE opensim CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+   CREATE USER 'opensim'@'localhost' IDENTIFIED BY 'minha_senha';
+   GRANT ALL PRIVILEGES ON opensim.* TO 'opensim'@'localhost';
+   ```
+
+3. Abre `config-include\storage\MySQL.ini` e edita:
+
+```ini
+[MySqlDatabase]
+    IncludeInStorage = true
+    ConnectionString = Server=localhost;Database=opensim;User Id=opensim;Password=minha_senha;
+```
+
+4. No `OpenSim.ini`, ativa o uso do MySQL:
+
+```ini
+[DatabaseService]
+    StorageProvider = "OpenSim.Data.MySQL.dll"
+```
+
+---
+
+## 📚 Extras úteis
+
+| Tarefa            | Comando                                          |
+| ----------------- | ------------------------------------------------ |
+| Criar novo avatar | `create user nome apelido password email regiao` |
+| Guardar o mundo   | `save oar nome.oar`                              |
+| Carregar um mundo | `load oar nome.oar`                              |
+| Ver utilizadores  | `show users`                                     |
+
+---
+
+## ✅ Resumo
+
+| Etapa                          | Estado |
+| ------------------------------ | ------ |
+| 🔽 Download do OpenSim         | ✅      |
+| ⚙️ Configuração da região      | ✅      |
+| 🏁 Execução do servidor        | ✅      |
+| 🔍 Instalar viewer (Firestorm) | ✅      |
+| 👤 Entrar com avatar           | ✅      |
+| 🧱 Começar a construir         | ✅      |
+
+---
+
+## ❓ Queres agora:
+
+* Configurar modo **Grid com Robust**?
+* Adicionar **scripts e módulos personalizados**?
+* Criar backup com `.oar` e partilhar com outros?
+* Criar mundo em rede para ligares de outro PC?
+
 
