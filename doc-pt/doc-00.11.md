@@ -308,6 +308,177 @@ Posso criar:
 * Uma configuração com 1 região
 * Um módulo simples personalizado
 * Um script `.lsl` para dar as boas-vindas aos visitantes
+---
+**explicar o OpenSimulator (OpenSim)** em 3 partes principais:
+
+---
+
+## 📌 1. O que é o OpenSimulator (servidor)
+
+## 🎮 2. O Visualizador 3D (“Viewer”)
+
+## 📁 3. O sistema de ficheiros e como tudo se organiza
+
+---
+
+## 📌 1. OpenSimulator – o servidor do mundo virtual
+
+O **OpenSimulator** é o **servidor que simula o mundo virtual 3D**. Ele **não mostra o mundo graficamente** — apenas fornece os dados do mundo a clientes externos. É como o "motor" do metaverso.
+
+### Principais funções:
+
+* Controlar regiões (ilhas ou áreas do mundo)
+* Gerir avatares (utilizadores)
+* Armazenar terrenos, objetos, scripts, inventários
+* Comunicar com os clientes via protocolo de rede (simulador → viewer)
+
+### Modos de funcionamento:
+
+| Modo                  | Descrição                                              |
+| --------------------- | ------------------------------------------------------ |
+| **Standalone**        | Tudo num só servidor, fácil de testar                  |
+| **Grid (com Robust)** | Arquitetura distribuída, várias regiões, mais realista |
+
+---
+
+## 🎮 2. O Visualizador 3D ("Viewer")
+
+O **Viewer** é o programa que o utilizador usa para **ver e interagir com o mundo virtual 3D**.
+
+O OpenSim **não vem com um viewer** — é necessário usar um viewer externo compatível com o protocolo do Second Life, como:
+
+### 🔸 Viewers compatíveis com OpenSim:
+
+| Nome               | Descrição                                 |
+| ------------------ | ----------------------------------------- |
+| **Firestorm**      | O mais usado, potente, personalizável     |
+| **Singularity**    | Leve, rápido, simples                     |
+| **Cool VL Viewer** | Focado em performance e recursos técnicos |
+| **Alchemy, Kokua** | Outras alternativas OpenSim-friendly      |
+
+---
+
+### 🔑 Como o viewer se liga ao OpenSim?
+
+1. Inicia o viewer (ex: Firestorm)
+
+2. Vai ao menu **"Preferências > OpenSim"** ou **"Grids"**
+
+3. Adiciona a grid do teu servidor:
+
+   * Nome: `Meu Mundo`
+   * URI: `http://127.0.0.1:9000` (ou IP público)
+
+4. Cria um utilizador no servidor com:
+
+   ```
+   create user nome apelido password email nome-regiao
+   ```
+
+5. Inicia sessão com esse utilizador no viewer.
+
+---
+
+### 🧭 Interface do viewer:
+
+* **Avatar**: Podes personalizar (roupa, aspeto, etc.)
+* **Inventário**: Itens, scripts, roupas, pastas
+* **Terreno e construção**: Constrói, edita, move objetos
+* **Chat local e IM**: Comunicação entre avatares
+* **Mini-mapa e teleporte**: Navegação pelas regiões
+
+---
+
+## 📁 3. Sistema de ficheiros do OpenSim
+
+A seguir, explico **como os ficheiros estão organizados** dentro do OpenSim (ex: versão zip extraída).
+
+### 📂 Estrutura típica:
+
+```
+opensim/
+├── bin/                      # Pasta principal
+│   ├── OpenSim.exe           # Servidor da região
+│   ├── Robust.exe            # Servidor central (Grid Mode)
+│   ├── OpenSim.ini           # Configurações principais
+│   ├── Robust.*.ini          # Configs do servidor robust
+│   ├── config-include/       # Configurações adicionais
+│   ├── Regions/              # Definições das regiões do mundo
+│   ├── ScriptEngines/        # Scripts compilados (LSL/OSSL)
+│   ├── oar-files/            # Backups de regiões (ficheiros OAR)
+│   └── assetcache/           # Cache local de assets (texturas, objetos)
+```
+
+---
+
+### 🧩 Ficheiros importantes:
+
+| Ficheiro/Pasta    | Função                                                         |
+| ----------------- | -------------------------------------------------------------- |
+| `OpenSim.exe`     | Inicia a região                                                |
+| `Robust.exe`      | Inicia os serviços de utilizador, login, inventário            |
+| `OpenSim.ini`     | Configuração principal do simulador                            |
+| `Robust.HG.ini`   | Configuração do Robust (modo grid com Hypergrid)               |
+| `Regions/`        | Contém os ficheiros `.ini` de cada região                      |
+| `config-include/` | Pastas com configurações de base de dados, scripts, permissões |
+| `ScriptEngines/`  | Scripts LSL compilados em DLLs                                 |
+| `*.oar`           | Ficheiros de cópia de segurança da região (paisagem, objetos)  |
+| `*.iar`           | Backup do inventário de um utilizador                          |
+
+---
+
+### 📄 Exemplo de ficheiro de região (Regions/Regiao1.ini):
+
+```ini
+[Regiao1]
+RegionUUID = 01234567-89ab-cdef-0123-456789abcdef
+Location = 1000,1000
+InternalPort = 9000
+ExternalHostName = 127.0.0.1
+```
+
+---
+
+### 💾 Base de dados
+
+Pode ser:
+
+* **SQLite** (padrão para testes)
+* **MySQL/MariaDB** (recomendado para produção)
+
+Armazena:
+
+* Terrenos, objetos
+* Utilizadores
+* Inventários
+* Scripts, grupos, assets
+
+---
+
+### 🗂 Exemplo de ficheiros salvos:
+
+| Tipo             | Extensão | Conteúdo                            |
+| ---------------- | -------- | ----------------------------------- |
+| Região           | `.oar`   | Paisagem, terrenos, construções     |
+| Inventário       | `.iar`   | Objetos e scripts de utilizador     |
+| Scripts          | `.lsl`   | Código fonte antes de ser compilado |
+| Script compilado | `.dll`   | Executado dentro do servidor        |
+
+---
+
+## 🎓 Conclusão geral
+
+| Componente                   | Função                                                 |
+| ---------------------------- | ------------------------------------------------------ |
+| **OpenSim**                  | Servidor 3D do mundo virtual                           |
+| **Viewer (Firestorm, etc.)** | Cliente gráfico para interagir com o mundo             |
+| **Sistema de ficheiros**     | Armazena configurações, scripts, regiões, utilizadores |
+| **Modularidade**             | Permite ativar/desativar módulos e funcionalidades     |
+
+---
+
+Um **viewer** (como o Firestorm), cria um **avatar**, ou montar uma **grid com múltiplas regiões**? 
+
 * Uma forma de adicionar novos módulos ao OpenSim
 
 **criar um módulo personalizado** ou **instalar e configurar uma grid multi-região** ?
