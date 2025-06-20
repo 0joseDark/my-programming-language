@@ -94,7 +94,7 @@
 ### **9. A nave/drone leva um robô**
 
 * O robô é transportado na nave e liberto no espaço.
-* Pode ser **transportado por drone planador**, que o larga.
+* Pode ser **transportado por drone ou por um planador**, que o larga.
 * O robô pode **regressar ao drone** para recarregar ou transmitir dados.
 
 ---
@@ -128,4 +128,4 @@
 
 ---
 
-**imagem conceptual da nave com drone e robô**
+**imagem conceptual da nave/drone e robô**
