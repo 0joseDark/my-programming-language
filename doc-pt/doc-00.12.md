@@ -6,3 +6,5 @@ __farramentas:__
 5. https://roboflow.com
 6. pensando num lançador para os modulos
 7. pensando no design da nave e robots
+7.0 - design da nave: done
+    - design do robot: done
