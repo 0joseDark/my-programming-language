@@ -10,4 +10,4 @@ __farramentas:__
 8. pensando no design da nave e robots
     - design da nave: done
     - design do robot: done
-9. a
+9. a nave/drone leva um robot
