@@ -9,6 +9,7 @@ __farramentas:__
    - energia: radiação solar e agua
 8. pensando no design da nave e robots
     - design da nave: done
+    - escudo termico
     - design do robot: done
 9. a nave/drone leva um robot
 10. seguraça:
