@@ -11,3 +11,6 @@ __farramentas:__
     - design da nave: done
     - design do robot: done
 9. a nave/drone leva um robot
+10. seguraça:
+   - a nave e robots podem ser raptados
+   - tem escudo anti pulsso magnetico
