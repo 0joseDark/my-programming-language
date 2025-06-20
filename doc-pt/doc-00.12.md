@@ -14,3 +14,4 @@ __farramentas:__
 10. seguraça:
    - a nave e robots podem ser raptados
    - tem escudo anti pulsso magnetico
+   - comunicação: micro ondas e telemetria
