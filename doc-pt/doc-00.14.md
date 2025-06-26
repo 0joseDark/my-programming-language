@@ -133,4 +133,153 @@
 | $V(t) = -V_0 e^{-t/\tau}$                        | Decaimento de voltagem em sensores RC |
 
 ---
+## passo 2:
+
+* 🛸 Força: $F = m \cdot a$
+* 🔄 Torque: $\tau = F \cdot r$
+* ⚡ Resistência: $R = \rho \cdot \dfrac{l}{A}$
+* ⏱️ Tempo RC: $t = R \cdot C$
+
+---
+
+### ✅ Interface gráfica:
+
+* **Menu**: “Simulação”
+
+  * Subopções: “Força”, “Torque”, “Resistência”, “Tempo RC”
+* **Botões**: “Calcular” e “Sair”
+* **Campos** para introduzir variáveis
+* **Resultado visível** na janela
+
+---
+
+### 🧠 Código comentado e explicado
+
+```python
+import sys
+from PyQt5.QtWidgets import (
+    QApplication, QMainWindow, QWidget, QVBoxLayout, QFormLayout,
+    QLabel, QLineEdit, QPushButton, QMenuBar, QAction, QMessageBox
+)
+
+class SimuladorFisica(QWidget):
+    def __init__(self, tipo):
+        super().__init__()
+        self.tipo = tipo
+        self.setWindowTitle(f"Simulador: {tipo}")
+        self.layout = QVBoxLayout()
+        self.form = QFormLayout()
+        self.inputs = {}
+
+        # Definir os campos conforme o tipo de simulação
+        if tipo == "Força":
+            campos = ["Massa (kg)", "Aceleração (m/s²)"]
+        elif tipo == "Torque":
+            campos = ["Força (N)", "Raio (m)"]
+        elif tipo == "Resistência":
+            campos = ["Resistividade (ρ)", "Comprimento (m)", "Área (m²)"]
+        elif tipo == "Tempo RC":
+            campos = ["Resistência (Ω)", "Capacitância (F)"]
+
+        # Criar campos de entrada
+        for campo in campos:
+            entrada = QLineEdit()
+            self.form.addRow(QLabel(campo), entrada)
+            self.inputs[campo] = entrada
+
+        self.resultado = QLabel("Resultado: ")
+        self.botao = QPushButton("Calcular")
+        self.botao.clicked.connect(self.calcular)
+
+        self.layout.addLayout(self.form)
+        self.layout.addWidget(self.botao)
+        self.layout.addWidget(self.resultado)
+        self.setLayout(self.layout)
+
+    def calcular(self):
+        try:
+            if self.tipo == "Força":
+                m = float(self.inputs["Massa (kg)"].text())
+                a = float(self.inputs["Aceleração (m/s²)"].text())
+                resultado = m * a
+                self.resultado.setText(f"Força = {resultado:.2f} N")
+
+            elif self.tipo == "Torque":
+                f = float(self.inputs["Força (N)"].text())
+                r = float(self.inputs["Raio (m)"].text())
+                resultado = f * r
+                self.resultado.setText(f"Torque = {resultado:.2f} N·m")
+
+            elif self.tipo == "Resistência":
+                ρ = float(self.inputs["Resistividade (ρ)"].text())
+                l = float(self.inputs["Comprimento (m)"].text())
+                A = float(self.inputs["Área (m²)"].text())
+                resultado = ρ * l / A
+                self.resultado.setText(f"Resistência = {resultado:.6f} Ω")
+
+            elif self.tipo == "Tempo RC":
+                R = float(self.inputs["Resistência (Ω)"].text())
+                C = float(self.inputs["Capacitância (F)"].text())
+                resultado = R * C
+                self.resultado.setText(f"Tempo RC = {resultado:.3f} s")
+        except Exception as e:
+            QMessageBox.warning(self, "Erro", f"Erro no cálculo: {str(e)}")
+
+class JanelaPrincipal(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("Simulações para Drone e Robô")
+
+        # Menu
+        menu = self.menuBar()
+        simMenu = menu.addMenu("Simulação")
+
+        acoes = ["Força", "Torque", "Resistência", "Tempo RC"]
+        for acao in acoes:
+            act = QAction(acao, self)
+            act.triggered.connect(lambda checked, tipo=acao: self.abrirSimulador(tipo))
+            simMenu.addAction(act)
+
+        botaoSair = QPushButton("Sair")
+        botaoSair.clicked.connect(self.close)
+        self.setCentralWidget(botaoSair)
+
+    def abrirSimulador(self, tipo):
+        self.simulador = SimuladorFisica(tipo)
+        self.simulador.show()
+
+# Execução
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    janela = JanelaPrincipal()
+    janela.resize(300, 100)
+    janela.show()
+    sys.exit(app.exec_())
+```
+
+---
+
+## 🖥️ Instruções para usar
+
+### 📦 Requisitos:
+
+```bash
+pip install PyQt5
+```
+
+### ▶️ Para correr:
+
+```bash
+python simulador_fisica.py
+```
+
+---
+
+## 🧾 Compatibilidade
+
+* ✅ **Windows 10**: testado com PyQt5
+* ✅ **Ubuntu**: instalar `python3-pyqt5` via `apt`
+* ✅ **Mac**: usar `pip3 install PyQt5` com Python 3.10+
+
+---
 
