@@ -19,8 +19,6 @@
 * Fórmulas: velocidade, aceleração, torque, equilíbrio
 
 ---
-
-### 🖼️ **Imagem do esquema completo** com circuitos e fórmulas:
 ![fórmulas](https://github.com/0joseDark/my-programming-language/blob/main/images/formulas.jpg)
 
 ---
