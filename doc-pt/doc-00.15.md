@@ -443,3 +443,4 @@ Funções auxiliares:
 * `ler_logs(tipo, últimos_n)`
 
 ---
+### em construção
