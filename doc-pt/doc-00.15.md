@@ -397,8 +397,157 @@ class SimuladorFisica(QWidget):
     def carregar_resultados(self):
         ultimos = ler_logs(self.tipo, 10)
         self.resultadosAntigos.setText("\n".join(ultimos))
-```
 
+```
+```python
+# Estrutura de pastas:
+# ├── main.py
+# ├── modulos/
+# │   ├── __init__.py
+# │   ├── simulador_fisico.py
+# │   └── pid.py
+# ├── sensor_plot.py
+# └── log.py
+
+# =========================================
+# Ficheiro: main.py
+# =========================================
+
+import sys
+from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QAction
+from modulos.simulador_fisico import SimuladorFisica
+from sensor_plot import SensorPlot
+from modulos.pid import JanelaPID
+
+class JanelaPrincipal(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("Simulações Robô & Drone")
+        self.resize(500, 150)
+
+        menu = self.menuBar()
+        sim_menu = menu.addMenu("Simulação Física")
+        sensores_menu = menu.addMenu("Sensores")
+
+        opcoes = ["Força", "Torque", "Resistência", "Tempo RC", "Energia Cinética", "Eficiência"]
+        for nome in opcoes:
+            acao = QAction(nome, self)
+            acao.triggered.connect(lambda checked, n=nome: self.abrir_simulador(n))
+            sim_menu.addAction(acao)
+
+        acao_pid = QAction("Controlador PID", self)
+        acao_pid.triggered.connect(self.abrir_pid)
+        sim_menu.addAction(acao_pid)
+
+        acao_sensores = QAction("MPU6050 em tempo real", self)
+        acao_sensores.triggered.connect(self.abrir_sensor)
+        sensores_menu.addAction(acao_sensores)
+
+        botao_sair = QPushButton("Sair")
+        botao_sair.clicked.connect(self.close)
+        self.setCentralWidget(botao_sair)
+
+    def abrir_simulador(self, tipo):
+        self.sim = SimuladorFisica(tipo)
+        self.sim.resize(500, 400)
+        self.sim.show()
+
+    def abrir_sensor(self):
+        self.sensor = SensorPlot()
+        self.sensor.show()
+
+    def abrir_pid(self):
+        self.pid = JanelaPID()
+        self.pid.show()
+
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    janela = JanelaPrincipal()
+    janela.show()
+    sys.exit(app.exec_())
+
+# =========================================
+# Ficheiro: modulos/__init__.py
+# =========================================
+
+# Este ficheiro torna a pasta 'modulos' num pacote Python.
+
+# =========================================
+# Ficheiro: modulos/simulador_fisico.py
+# =========================================
+
+<... conteúdo anterior do simulador_fisico.py ...>
+
+# =========================================
+# Ficheiro: modulos/pid.py
+# =========================================
+
+from PyQt5.QtWidgets import QWidget, QVBoxLayout, QLabel, QFormLayout, QLineEdit, QPushButton, QMessageBox
+import matplotlib.pyplot as plt
+
+class JanelaPID(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("Simulador PID")
+        self.layout = QVBoxLayout()
+        self.form = QFormLayout()
+
+        self.inputs = {}
+        campos = ["Kp", "Ki", "Kd", "Erro Inicial", "Setpoint"]
+
+        for campo in campos:
+            entrada = QLineEdit()
+            self.form.addRow(QLabel(campo), entrada)
+            self.inputs[campo] = entrada
+
+        self.botao = QPushButton("Simular")
+        self.botao.clicked.connect(self.simular_pid)
+
+        self.layout.addLayout(self.form)
+        self.layout.addWidget(self.botao)
+        self.setLayout(self.layout)
+
+    def simular_pid(self):
+        try:
+            Kp = float(self.inputs["Kp"].text())
+            Ki = float(self.inputs["Ki"].text())
+            Kd = float(self.inputs["Kd"].text())
+            erro_inicial = float(self.inputs["Erro Inicial"].text())
+            setpoint = float(self.inputs["Setpoint"].text())
+
+            dt = 1  # passo de tempo
+            tempo_total = 50
+            tempos = list(range(tempo_total))
+            erros = []
+            saidas = []
+            integral = 0
+            erro_anterior = erro_inicial
+            saida = 0
+
+            for t in tempos:
+                erro = setpoint - saida
+                integral += erro * dt
+                derivada = (erro - erro_anterior) / dt
+                saida = Kp * erro + Ki * integral + Kd * derivada
+                erros.append(erro)
+                saidas.append(saida)
+                erro_anterior = erro
+
+            plt.figure(figsize=(6, 4))
+            plt.plot(tempos, saidas, label="Saída PID")
+            plt.plot(tempos, [setpoint]*tempo_total, '--', label="Setpoint")
+            plt.xlabel("Tempo")
+            plt.ylabel("Saída")
+            plt.title("Resposta do Controlador PID")
+            plt.grid(True)
+            plt.legend()
+            plt.tight_layout()
+            plt.show()
+
+        except Exception as e:
+            QMessageBox.warning(self, "Erro", f"Erro na simulação: {str(e)}")
+
+```
 ---
 
 ## ✅ Conclusão
