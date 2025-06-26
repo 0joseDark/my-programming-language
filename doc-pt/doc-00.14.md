@@ -499,4 +499,344 @@ if __name__ == "__main__":
 
 ---
 ## Passo 4:
+Perfeito! Vamos agora **expandir o simulador com novas funcionalidades**, **leitura de sensores reais** e **gráficos avançados**:
+
+---
+
+## 🔧 NOVAS FUNCIONALIDADES
+
+### ✅ 1. **Simulação de Energia e Eficiência**
+
+* **Energia cinética**:
+  $E = \frac{1}{2}mv^2$
+* **Eficiência mecânica**:
+  $\eta = \frac{Saída}{Entrada} \times 100\%$
+
+### ✅ 2. **Simulação de PID**
+
+* Controlador Proporcional-Integral-Derivativo
+  $u(t) = K_p e(t) + K_i \int e(t)dt + K_d \frac{de(t)}{dt}$
+* Aplicado, por exemplo, para estabilizar o drone usando sensor de ângulo (MPU6050)
+
+### ✅ 3. **Leitura em tempo real de dados via Arduino (com Raspberry Pi)**
+
+* Arduino Mega envia dados do MPU6050 via porta serial
+* Python lê e mostra:
+
+  * Aceleração (X, Y, Z)
+  * Velocidade angular (pitch, roll, yaw)
+  * Gráfico tipo **horizonte artificial** ou **linha do tempo 3D**
+
+---
+
+## 📦 ESTRUTURA DO SISTEMA
+
+### 🎯 Arduino Mega (código C++)
+
+```cpp
+#include <Wire.h>
+#include <MPU6050.h>
+
+MPU6050 mpu;
+
+void setup() {
+  Serial.begin(9600);
+  Wire.begin();
+  mpu.initialize();
+}
+
+void loop() {
+  int16_t ax, ay, az, gx, gy, gz;
+  mpu.getMotion6(&ax, &ay, &az, &gx, &gy, &gz);
+
+  Serial.print(ax); Serial.print(",");
+  Serial.print(ay); Serial.print(",");
+  Serial.print(az); Serial.print(",");
+  Serial.print(gx); Serial.print(",");
+  Serial.print(gy); Serial.print(",");
+  Serial.println(gz);
+  delay(100);
+}
+```
+
+---
+
+### 🐍 Python (Raspberry Pi ou PC)
+
+Instala dependências:
+
+```bash
+pip install pyserial matplotlib PyQt5
+```
+
+### 🧠 Leitor de sensores com gráfico em tempo real
+
+```python
+import sys
+import serial
+import threading
+from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QVBoxLayout, QWidget
+from PyQt5.QtCore import QTimer
+import matplotlib.pyplot as plt
+from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as Canvas
+
+PORTA_SERIAL = '/dev/ttyUSB0'  # ou COM3 no Windows
+BAUDRATE = 9600
+
+class SensorPlot(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("Gráfico de Sensor 3 Eixos (MPU6050)")
+        self.ax_data = []
+        self.ay_data = []
+        self.az_data = []
+
+        self.canvas = Canvas(plt.figure(figsize=(5, 3)))
+        self.ax = self.canvas.figure.add_subplot(111)
+        self.ax.set_title("Aceleração (X, Y, Z)")
+        self.ax.set_ylim(-20000, 20000)
+        self.line_x, = self.ax.plot([], [], label='Ax')
+        self.line_y, = self.ax.plot([], [], label='Ay')
+        self.line_z, = self.ax.plot([], [], label='Az')
+        self.ax.legend()
+
+        layout = QVBoxLayout()
+        layout.addWidget(self.canvas)
+        self.setLayout(layout)
+
+        self.timer = QTimer()
+        self.timer.timeout.connect(self.atualizar_grafico)
+        self.timer.start(100)
+
+        self.serial = serial.Serial(PORTA_SERIAL, BAUDRATE)
+        self.leitura = threading.Thread(target=self.ler_dados)
+        self.leitura.daemon = True
+        self.leitura.start()
+
+    def ler_dados(self):
+        while True:
+            try:
+                linha = self.serial.readline().decode('utf-8').strip()
+                ax, ay, az, *_ = map(int, linha.split(','))
+                self.ax_data.append(ax)
+                self.ay_data.append(ay)
+                self.az_data.append(az)
+
+                if len(self.ax_data) > 100:
+                    self.ax_data.pop(0)
+                    self.ay_data.pop(0)
+                    self.az_data.pop(0)
+            except:
+                continue
+
+    def atualizar_grafico(self):
+        self.line_x.set_data(range(len(self.ax_data)), self.ax_data)
+        self.line_y.set_data(range(len(self.ay_data)), self.ay_data)
+        self.line_z.set_data(range(len(self.az_data)), self.az_data)
+        self.ax.set_xlim(0, 100)
+        self.canvas.draw()
+
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    janela = SensorPlot()
+    janela.resize(600, 400)
+    janela.show()
+    sys.exit(app.exec_())
+```
+
+---
+
+## 🛰️ HORIZONTE ARTIFICIAL (Pitch/Roll)
+
+Usando os valores `gx`, `gy`, `gz` (giroscópio), podemos adicionar um **painel gráfico com horizonte** (tipo cockpit), atualizando o plano conforme o ângulo de inclinação.
+
+Posso gerar isso também com `matplotlib.animation` ou `PyQtGraph` para melhor desempenho.
+
+---
+
+## 🔧 INTEGRAÇÃO TOTAL
+
+Unir tudo:
+
+* Qt com **simulador de força, torque, energia, PID**
+* Módulo para **ler sensores reais**
+* **Gráfico em tempo real + logs**
+* Aplicação robusta para **PC ou Raspberry Pi**
+
+---
+## Passo 5:
+## 🧱 ESTRUTURA DA APLICAÇÃO
+
+### 🎛️ Interface Principal (menu Qt):
+
+```
+┌──────────────────────────────┐
+│      Simulações Física       │
+├──────────────────────────────┤
+│ [Menu Simulação]             │
+│   ├─ Força                   │
+│   ├─ Torque                  │
+│   ├─ Resistência             │
+│   ├─ Tempo RC                │
+│   ├─ Energia Cinética        │
+│   ├─ Eficiência              │
+│   ├─ PID (ajustável)         │
+│   └─ Sensores 3 Eixos (RT)   │
+│                              │
+│ [Gravação em log.txt / .csv] │
+└──────────────────────────────┘
+```
+
+---
+
+## 🎯 Objetivo: tudo numa só aplicação com `PyQt5`
+
+---
+
+## 📦 Instalar dependências:
+
+```bash
+pip install pyqt5 pyserial matplotlib
+```
+
+---
+
+## 🧠 ESTRUTURA DO CÓDIGO (resumo por módulos)
+
+### 🗂️ Arquivos:
+
+* `main.py` – menu principal
+* `modulos/` – simulações (força, torque, etc.)
+* `pid.py` – controlador PID
+* `sensor_plot.py` – gráfico dos sensores MPU6050
+* `log.py` – logging e leitura
+
+---
+
+## 🧪 Exemplo: `main.py` (início da app)
+
+```python
+import sys
+from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QAction, QMenu
+from modulos.simulador_fisico import SimuladorFisica
+from sensor_plot import SensorPlot
+from pid import JanelaPID
+
+class JanelaPrincipal(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("Simulações Robô & Drone")
+        self.resize(500, 150)
+
+        menu = self.menuBar()
+        sim_menu = menu.addMenu("Simulação Física")
+        sensores_menu = menu.addMenu("Sensores")
+
+        opcoes = ["Força", "Torque", "Resistência", "Tempo RC", "Energia Cinética", "Eficiência"]
+        for nome in opcoes:
+            acao = QAction(nome, self)
+            acao.triggered.connect(lambda checked, n=nome: self.abrir_simulador(n))
+            sim_menu.addAction(acao)
+
+        # PID
+        acao_pid = QAction("Controlador PID", self)
+        acao_pid.triggered.connect(self.abrir_pid)
+        sim_menu.addAction(acao_pid)
+
+        # Sensores 3 eixos
+        acao_sensores = QAction("MPU6050 em tempo real", self)
+        acao_sensores.triggered.connect(self.abrir_sensor)
+        sensores_menu.addAction(acao_sensores)
+
+        botao_sair = QPushButton("Sair")
+        botao_sair.clicked.connect(self.close)
+        self.setCentralWidget(botao_sair)
+
+    def abrir_simulador(self, tipo):
+        self.sim = SimuladorFisica(tipo)
+        self.sim.resize(500, 400)
+        self.sim.show()
+
+    def abrir_sensor(self):
+        self.sensor = SensorPlot()
+        self.sensor.show()
+
+    def abrir_pid(self):
+        self.pid = JanelaPID()
+        self.pid.show()
+
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    janela = JanelaPrincipal()
+    janela.show()
+    sys.exit(app.exec_())
+```
+
+---
+
+## 📊 `sensor_plot.py` → Leitura real de sensores
+
+* Lê da porta serial (Arduino)
+* Mostra gráfico com **X, Y, Z**
+* Guarda dados no log
+
+---
+
+## ⚙️ `simulador_fisico.py` → Cálculo com fórmulas físicas
+
+Inclui:
+
+* $F = ma$
+* $\tau = F \cdot r$
+* $R = \rho \frac{l}{A}$
+* $t = RC$
+* $E = \frac{1}{2}mv^2$
+* Eficiência = $\frac{Saída}{Entrada} \times 100\%$
+
+Mostra:
+
+* Fórmula
+* Gráfico da variável vs valor
+* Últimos 10 resultados
+
+---
+
+## 🧮 `pid.py` → Simulador PID
+
+* Campos: `Kp`, `Ki`, `Kd`, `Erro Inicial`, `Setpoint`
+* Gera gráfico da resposta do controlador ao longo do tempo
+
+---
+
+## 📁 `log.py` → Função auxiliar
+
+* `gravar_log(tipo, resultado)`
+* `ler_logs(tipo, últimos_n)`
+
+---
+
+## 📷 Horizonte Artificial?
+
+Para criar:
+
+* Converte o giroscópio em ângulos: pitch, roll
+* Usa `matplotlib` com `imshow()` ou `transform()` para mostrar horizonte
+* Alternativa mais rápida: `PyQtGraph`
+
+---
+
+## ✅ Conclusão
+
+Com esta aplicação Qt unificada, terás:
+
+| Funcionalidade               | Incluído ✅             |
+| ---------------------------- | ---------------------- |
+| Cálculos físicos             | ✅                      |
+| Simulação PID                | ✅                      |
+| Leitura de sensores reais    | ✅                      |
+| Gráfico tipo horizonte       | ✅ (em desenvolvimento) |
+| Logs automáticos             | ✅                      |
+| Compatível com RPi + Arduino | ✅                      |
+
+---
 
