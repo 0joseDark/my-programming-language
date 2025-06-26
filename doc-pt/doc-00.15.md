@@ -699,44 +699,8 @@ simulador_fisica_app/
 
 ---
 
-O ficheiro `.zip` com a estrutura completa da aplicação foi gerado com sucesso:
-
-🔽 [Clique aqui para descarregar o ficheiro ZIP](sandbox:/mnt/data/simulador_fisica_app.zip)
 
 ---
-
-### 📁 O que está incluído no `simulador_fisica_app.zip`:
-
-```
-simulador_fisica_app/
-├── main.py                      # Menu principal Qt
-├── sensor_plot.py              # Gráfico de sensores MPU6050
-├── log.py                      # Gestão de logs
-└── modulos/
-    ├── __init__.py
-    ├── simulador_fisico.py     # Simulações: força, torque, resistência, etc.
-    └── pid.py                  # Simulador PID com gráfico
-```
-
----
-
-### 🧪 Como usar:
-
-1. **Extrai o ZIP**
-2. Instala os módulos necessários:
-
-   ```bash
-   pip install pyqt5 matplotlib pyserial
-   ```
-3. Executa o programa:
-
-   ```bash
-   python main.py
-   ```
-
----
-
-O ficheiro `.zip` com a estrutura completa da aplicação foi gerado com sucesso:
 
 🔽 [Clique aqui para descarregar o ficheiro ZIP](sandbox:/mnt/data/simulador_fisica_app.zip)
 
