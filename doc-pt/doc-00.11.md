@@ -128,19 +128,6 @@ O **OpenSimulator** é uma plataforma poderosa e gratuita para criar o teu próp
 * **Experiências artísticas**
 * **Comunidades virtuais privadas**
 
----
-
-### 📘 Se quiseres, posso ajudar com:
-
-* Instalar o servidor no Windows ou Ubuntu
-* Criar uma região com nome, terreno, avatar
-* Usar um cliente 3D como Firestorm
-* Fazer uma rede entre PCs com várias regiões
----
-Claro! Vamos desenvolver e **explicar em detalhe o OpenSimulator**, o **sistema de módulos** e **estrutura de ficheiros**, para que possas compreender como funciona por dentro e como podes personalizar ou expandir o teu mundo virtual.
-
----
-
 ## 🧠 O que é o OpenSim?
 
 O **OpenSimulator (OpenSim)** é um **servidor de mundos 3D** que simula terrenos, avatares, objetos, interações, e permite ligações a clientes 3D como o **Firestorm**. Ele é modular e altamente configurável, sendo usado para fins educativos, sociais, de simulação e desenvolvimento.
