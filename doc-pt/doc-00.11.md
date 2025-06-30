@@ -287,15 +287,6 @@ OpenSim armazena:
 | `bin/*.dll`      | Módulos carregados dinamicamente  |
 
 ---
-
-## 🧪 Queres um exemplo prático?
-
-Posso criar:
-
-* Uma configuração com 1 região
-* Um módulo simples personalizado
-* Um script `.lsl` para dar as boas-vindas aos visitantes
----
 **explicar o OpenSimulator (OpenSim)** em 3 partes principais:
 
 ---
